@@ -1,1 +1,1 @@
-set server=H:\
+set server=U:\
