@@ -1,1 +1,3 @@
-set server=U:\
+set SERVER=D:\
+set CONFIGCHATROOMID=1234
+set CONFIGNICKNAME=Honza
