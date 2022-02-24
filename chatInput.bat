@@ -8,12 +8,12 @@ cd %2
 
 :mainLoop
 
-cls
-
 set /p MESSAGE=">"
 set MESSAGE=%3: %MESSAGE%
 echo %MESSAGE%
 echo %MESSAGE%>"messages.txt"
+
+cls
 
 ping 127.0.0.1 -n 2 > nul
 
