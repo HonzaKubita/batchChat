@@ -15,4 +15,6 @@ set MESSAGE=%3: %MESSAGE%
 echo %MESSAGE%
 echo %MESSAGE%>"messages.txt"
 
+ping 127.0.0.1 -n 2 > nul
+
 goto mainLoop
