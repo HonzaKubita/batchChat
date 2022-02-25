@@ -70,7 +70,11 @@ if %CHOICE% == 2 (
 )
 if %CHOICE% == 3 (
   goto joinWithConfig
-)
+) 
+
+echo [101;93mError: Invalid option! [0m
+pause
+goto menu
 
 :createRoom
 cls
@@ -118,6 +122,21 @@ if "%PREVMESSAGE%" == "%MESSAGE%" (
 )
 
 :newMessage
+
+for /f "tokens=5" %%a in ('%~dp0/cmdow/bin/Release/cmdow "batchChat"') do set "WINDOWACTIVE=%%a"
+for /f "tokens=5" %%a in ('%~dp0/cmdow/bin/Release/cmdow "batchChat - Input window"') do set "INPUTWINDOWACTIVE=%%a"
+
+if "%WINDOWACTIVE%"=="Act" goto newMessageActiveWindow
+if "%INPUTWINDOWACTIVE%"=="Act" goto newMessageActiveWindow
+
+:newMessageInactiveWindow
+
+for /f "tokens=1 delims=:" %%i in ("%MESSAGE%") do (set MESSAGESENDER=%%i)
+set "MESSAGEWITHOUTSENDER=%MESSAGE:: =" & set "MESSAGEWITHOUTSENDER=%"
+
+call %~dp0notif "Information" "" "%MESSAGESENDER%" "%MESSAGEWITHOUTSENDER%"
+
+:newMessageActiveWindow
 
 echo %MESSAGE%
 set PREVMESSAGE=%MESSAGE%

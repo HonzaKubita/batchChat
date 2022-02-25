@@ -1,5 +1,5 @@
 @echo off
-title batchChat - Input window %3
+title batchChat - Input window
 mode 50,3
 
 cd /D %1
